@@ -7,6 +7,7 @@ public class scriptTest1 : MonoBehaviour
 
     Rigidbody2D placeHolderRB;
     Collider2D pHCollider;
+    Animator pHAnimtor;
     [SerializeField]
     float pHSpeed;
     float pHJump = 5;
@@ -15,17 +16,47 @@ public class scriptTest1 : MonoBehaviour
     {
         placeHolderRB = GetComponent<Rigidbody2D>();
         pHCollider = GetComponent<Collider2D>();
+        pHAnimtor = GetComponent<Animator>();
     }
 
     void Update()
     {
-        float control = Input.GetAxis("Horizontal") * Time.deltaTime;
-        Vector2 phVelocity = new Vector2(control * pHSpeed, placeHolderRB.velocity.y);
-        placeHolderRB.velocity = phVelocity;
-
+        Movement();
         Jumping();
 
     }
+
+    private void Movement()
+    {
+        float control = Input.GetAxis("Horizontal") * Time.deltaTime;
+        Vector2 phVelocity = new Vector2(control * pHSpeed, placeHolderRB.velocity.y);
+        placeHolderRB.velocity = phVelocity; 
+
+        if(Input.GetAxis("Horizontal") < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        if(Input.GetAxis("Horizontal") > 0)
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
+
+
+        //bool placeholderHorizontalMove = Mathf.Abs(placeHolderRB.velocity.y) > 0;
+
+        //if(placeholderHorizontalMove)
+        //{
+        //    phAnimationChange(placeholderHorizontalMove);
+        //}
+
+
+
+    }
+
+    //private void phAnimationChange(bool placeholderHorizontalMove)
+    //{
+    //    pHAnimtor.SetBool("CanWalk", placeholderHorizontalMove);
+    //}
 
     private void Jumping()
     {
@@ -40,15 +71,6 @@ public class scriptTest1 : MonoBehaviour
                 placeHolderRB.velocity += jumpVelocity;
 
             }
-
-            //   bool touchGround = pHCollider.IsTouchingLayers(LayerMask.GetMask("Foreground"));
-            // bool isTouchingGround = gnomeCollider.IsTouchingLayers(LayerMask.GetMask("Foreground"));
-            //if (touchGround)
-            //{
-
-
-            // placeHolderRB.velocity = new Vector2(placeHolderRB.velocity.x, pHJump);
-            //}
 
         }
     }
