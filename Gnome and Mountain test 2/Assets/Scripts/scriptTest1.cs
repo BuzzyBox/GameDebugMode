@@ -8,9 +8,14 @@ public class scriptTest1 : MonoBehaviour
     Rigidbody2D placeHolderRB;
     Collider2D pHCollider;
     Animator pHAnimtor;
+   // [SerializeField]
+   // GameObject phBackpack;
     [SerializeField]
     float pHSpeed;
     float pHJump = 5;
+
+    [HideInInspector] public int CoinCollected = 0;
+
 
     void Start()
     {
@@ -41,22 +46,26 @@ public class scriptTest1 : MonoBehaviour
             transform.rotation = Quaternion.Euler(0,0,0);
         }
 
-
-        //bool placeholderHorizontalMove = Mathf.Abs(placeHolderRB.velocity.y) > 0;
-
-        //if(placeholderHorizontalMove)
-        //{
-        //    phAnimationChange(placeholderHorizontalMove);
-        //}
-
-
-
     }
 
-    //private void phAnimationChange(bool placeholderHorizontalMove)
-    //{
-    //    pHAnimtor.SetBool("CanWalk", placeholderHorizontalMove);
-    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            CoinCollected++;
+            Destroy(collision.gameObject);
+            Debug.Log("CoinCollected");
+
+            if(CoinCollected > 0)
+            {
+                pHSpeed -= 1000;
+                Debug.Log("Slowing down");
+            }
+            
+
+        }
+    }
 
     private void Jumping()
     {
