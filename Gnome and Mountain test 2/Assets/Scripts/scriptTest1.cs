@@ -26,6 +26,12 @@ public class scriptTest1 : MonoBehaviour
 
     void Update()
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
+
+
         Movement();
         Jumping();
 

@@ -1,7 +1,3 @@
-Hello World
-CHOICE_COUNT
-* 1 
-* 2 
-* 3
-- you've selected a button!
+I should be talking now!! Hahaha >:)
 
+^_^ 0_0!!! 

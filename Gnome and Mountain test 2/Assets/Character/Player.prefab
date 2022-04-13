@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6215410533072154454}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677ee37b8022f51428235576aebee462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phBackpack: {fileID: 0}
   pHSpeed: 8000
   CoinCollected: 0
 --- !u!1 &5165054673262617241
