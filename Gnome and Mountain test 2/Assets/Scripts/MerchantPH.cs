@@ -42,7 +42,7 @@ public class MerchantPH : MonoBehaviour
             {
 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
-
+                Debug.Log("TextHere");
 
             }
             

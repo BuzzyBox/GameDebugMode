@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour
 {
   private static DialogueManager instance;
 
+    [Header("Params")]
+    [SerializeField] private float typingSpeed = 0.04f;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -83,13 +85,35 @@ public class DialogueManager : MonoBehaviour
 
         if(currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            //  dialogueText.text = currentStory.Continue();
+
+            StartCoroutine(displayLine(currentStory.Continue()));
+
         }
         else
         {
-            ExitDialogueMode();
+           ExitDialogueMode();
+
+          //  StartCoroutine(ExitDialogueMode());
+
         }
     
+    }
+
+    private IEnumerator displayLine(string line)
+    {
+        dialogueText.text = "";
+
+        foreach (char letter in line.ToCharArray())
+        {
+
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+
+        }
+
+
+
     }
 
 
