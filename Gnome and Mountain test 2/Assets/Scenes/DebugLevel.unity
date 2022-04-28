@@ -2623,7 +2623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 589800216223949749, guid: 14c14159ca9e6f24c902fc3a8164f905, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 589800216223949749, guid: 14c14159ca9e6f24c902fc3a8164f905, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2977,6 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d23a56fca48d8f4cab323d113288a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typingSpeed: 0.04
   dialoguePanel: {fileID: 298707155}
   dialogueText: {fileID: 497026527}
 --- !u!1001 &1821623599

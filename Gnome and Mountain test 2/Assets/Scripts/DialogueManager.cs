@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
   private static DialogueManager instance;
 
     [Header("Params")]
-    [SerializeField] private float typingSpeed = 0.04f;
+    [SerializeField] private float typingSpeed = 0.02f;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -50,7 +50,7 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKey("z"))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
 
             ContinueStory();
@@ -73,6 +73,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void ExitDialogueMode()
     {
+       // yield return new WaitForSeconds(0.2f);
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
@@ -85,16 +86,16 @@ public class DialogueManager : MonoBehaviour
 
         if(currentStory.canContinue)
         {
-            //  dialogueText.text = currentStory.Continue();
+           dialogueText.text = currentStory.Continue();
 
-            StartCoroutine(displayLine(currentStory.Continue()));
+           //StartCoroutine(displayLine(currentStory.Continue()));
 
         }
         else
         {
            ExitDialogueMode();
 
-          //  StartCoroutine(ExitDialogueMode());
+          //StartCoroutine(ExitDialogueMode());
 
         }
     
