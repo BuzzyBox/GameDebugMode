@@ -28,6 +28,7 @@ public class scriptTest1 : MonoBehaviour
     {
         if (DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            placeHolderRB.velocity = Vector2.zero;
             return;
         }
 
