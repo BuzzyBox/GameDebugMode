@@ -6,6 +6,11 @@ using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
+    /*Will need to make a choice dialouge here soon for the store
+     Basically how I think it will go that I'll make a new script 
+     Make a component to it and make a boolean if true*/
+
+
   private static DialogueManager instance;
 
     [Header("Params")]
@@ -59,8 +64,6 @@ public class DialogueManager : MonoBehaviour
 
 
     }
-
-
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
