@@ -22,7 +22,6 @@ public class CameraScript : MonoBehaviour
         cameraOffset = new Vector3(0.00f, 2.31f, -10f);
 
 
-
     }
 
     void Update()

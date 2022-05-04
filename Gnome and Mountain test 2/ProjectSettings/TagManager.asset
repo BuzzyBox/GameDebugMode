@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Foreground
   - Coin
+  - True
   layers:
   - Default
   - TransparentFX
