@@ -4,11 +4,11 @@ I should be talking now!! Hahaha >:)
 ->Main
 == Main ==
 Would you like to shop in my shop?? :3
-    * Yes
-        iogjfdoigj
+    *[Yes]
+        Yay!! :D
         ->DONE
-    * No
-        ofdphkdfhkfdpo
+    *[No]
+        Okay Bye :B
         ->DONE
         
 ->END

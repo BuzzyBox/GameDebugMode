@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     //Choice code 
+
     [Header("Choice UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choiceText;
@@ -30,10 +31,10 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
+   
 
 
-
-    private void Awake()
+private void Awake()
     {
         if(instance != null)
         {
@@ -72,7 +73,7 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
 
             ContinueStory();
@@ -149,31 +150,33 @@ public class DialogueManager : MonoBehaviour
         for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
+
         }
 
         StartCoroutine(selectFirstChoice());
+
+        
 
     }
 
     private IEnumerator selectFirstChoice()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
+      
+
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
-
-        }
-
+        
+        
 
     }
 
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
-
         
     }
+
 
     private IEnumerator displayLine(string line)
     {

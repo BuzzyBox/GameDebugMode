@@ -38,7 +38,7 @@ public class MerchantPH : MonoBehaviour
         if(playerinRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
-            if(Input.GetKeyDown(KeyCode.Z))
+            if(Input.GetKeyDown(KeyCode.Return))
             {
 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
