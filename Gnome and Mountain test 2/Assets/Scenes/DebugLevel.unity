@@ -417,7 +417,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1650187952}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99839413
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3300,12 +3300,12 @@ MonoBehaviour:
     itemRef: {fileID: 0}
   - name: Speed_Upgrade
     price: 1
-    icon1: {fileID: 0}
+    icon1: {fileID: 21300000, guid: 4fc47931b2fd3d14a997a1477988752b, type: 3}
     quantity: 0
     itemRef: {fileID: 0}
   - name: Stamina_Upgrade
     price: 1
-    icon1: {fileID: 0}
+    icon1: {fileID: 21300000, guid: b141a4b0f002ca8459803580fd8e212b, type: 3}
     quantity: 0
     itemRef: {fileID: 0}
   shopItems: {fileID: 1371691044}
@@ -4037,7 +4037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 36.591312, y: 52.625}
+  m_AnchoredPosition: {x: 36.591503, y: 52.625}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.05, y: 1}
 --- !u!114 &1371691045

@@ -37,21 +37,26 @@ public class BuyTest1 : MonoBehaviour
 
             foreach(Transform child in item.transform)
             {
-                if(child.gameObject.name == "Item1")
+               // Debug.Log("Transform check");
+                if (child.gameObject.name == "Quantity")
                 {
+                    Debug.Log("Quantity check");
                    child.gameObject.GetComponent<Text>().text = upgrade.quantity.ToString();
 
+                }  
+                else if(child.gameObject.name == "Name")
+                {
+                    Debug.Log("Name check");
+                    child.gameObject.GetComponent<TextMeshProUGUI>().text = upgrade.name.ToString();
                 }
                 else if (child.gameObject.name == "Cost")
                 {
-                    child.gameObject.gameObject.GetComponent<Text>().text = "$" + upgrade.price.ToString();
-                }
-                else if(child.gameObject.name == "Name")
-                {
-                    child.gameObject.GetComponent<Text>().text = upgrade.name.ToString();
+                    Debug.Log("Price check");
+                    child.gameObject.gameObject.GetComponent<TextMeshProUGUI>().text = "$" + upgrade.price.ToString();
                 }
                 else if(child.gameObject.name == "Image")
                 {
+                    Debug.Log("Image check");
                     child.gameObject.GetComponent<Image>().sprite = upgrade.icon1;
                 }
             }
