@@ -10,10 +10,12 @@ public class scriptTest1 : MonoBehaviour
     Animator pHAnimtor;
     Items item;
     enterShop shopping;
-   // [SerializeField]
-   // GameObject phBackpack;
+    BuyTest1 upgrades1;
+    // [SerializeField]
+    // GameObject phBackpack;
+    float control;
     [SerializeField]
-    float pHSpeed;
+    public float pHSpeed = 8000f;
     float pHJump = 5;
 
     [HideInInspector] public int CoinCollected = 0;
@@ -23,7 +25,7 @@ public class scriptTest1 : MonoBehaviour
     {
         placeHolderRB = GetComponent<Rigidbody2D>();
         pHCollider = GetComponent<Collider2D>();
-        pHAnimtor = GetComponent<Animator>(); 
+        pHAnimtor = GetComponent<Animator>();
         shopping = GetComponent<enterShop>();
         item = GetComponent<Items>();
     }
@@ -37,6 +39,7 @@ public class scriptTest1 : MonoBehaviour
         }
 
 
+
         Movement();
         Jumping();
 
@@ -44,17 +47,17 @@ public class scriptTest1 : MonoBehaviour
 
     private void Movement()
     {
-        float control = Input.GetAxis("Horizontal") * Time.deltaTime;
+        control = Input.GetAxis("Horizontal") * Time.deltaTime;
         Vector2 phVelocity = new Vector2(control * pHSpeed, placeHolderRB.velocity.y);
-        placeHolderRB.velocity = phVelocity; 
+        placeHolderRB.velocity = phVelocity;
 
-        if(Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("Horizontal") < 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        if(Input.GetAxis("Horizontal") > 0)
+        if (Input.GetAxis("Horizontal") > 0)
         {
-            transform.rotation = Quaternion.Euler(0,0,0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
     }
@@ -64,21 +67,36 @@ public class scriptTest1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
+
             CoinCollected++;
             Destroy(collision.gameObject);
             Debug.Log("CoinCollected");
 
-            if(CoinCollected > 0)
+            if (CoinCollected > 0)
             {
                 pHSpeed -= 1000;
                 Debug.Log("Slowing down");
             }
-            
-                
-            
+
+            if(CoinCollected < 0)
+            {
+                pHSpeed = 8000;
+                Debug.Log("Speed up");
+            }
+
+            //if(CoinCollected - upgrade1.coins > 0)
+            //{
+
+            //    BuyTest1.Instance.coins++;
+            //    Destroy(gameObject);
+
+            //}
+
+
 
         }
     }
+
 
     private void Jumping()
     {
@@ -96,4 +114,14 @@ public class scriptTest1 : MonoBehaviour
 
         }
     }
+
+
+    //private void FixedUpdate()
+    //{
+    //    placeHolderRB.velocity = new Vector2(control, 0).normalized * pHSpeed * Time.deltaTime;
+    //}
+
+
+
+
 }
