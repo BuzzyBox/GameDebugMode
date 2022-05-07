@@ -9,6 +9,10 @@ TagManager:
   - True
   - False
   - Exit
+  - Quantity
+  - Cost
+  - Name
+  - Image
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class enterShop : MonoBehaviour
 {
     public GameObject shopMenu;
     public scriptTest1 playerCoins;
+    public BuyTest1 buy;
 
 
 
@@ -29,6 +30,7 @@ public class enterShop : MonoBehaviour
     {
      // dialogueManager = GetComponent<DialogueManager>();
       shopUI.SetActive(false);
+      
     }
 
     void Update()
@@ -44,6 +46,9 @@ public class enterShop : MonoBehaviour
             {
                 Debug.Log("TextHere");
                 shopUI.SetActive(true);
+                buy.gameObject.SetActive(true);
+
+
 
             }
             if (!Input.GetKeyDown(KeyCode.Return))
@@ -62,6 +67,7 @@ public class enterShop : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(shopMenu);
+            buy.gameObject.SetActive(false);
             Debug.Log("ExitShop");
             shopUI.SetActive(false);
         }
