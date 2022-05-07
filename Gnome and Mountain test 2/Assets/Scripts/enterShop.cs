@@ -7,79 +7,35 @@ using UnityEngine.EventSystems;
 
 public class enterShop : MonoBehaviour
 {
-    //DialogueManager dialogueManager;
-    //public TextAsset inkJSON;
-    //private Story TestStory;
-    //public bool dialogueChoice { get; private set; }
-    //public string key;
+    public GameObject shopMenu;
+    public scriptTest1 playerCoins;
 
-    //[Header("Choice 0")]
-    //[SerializeField] GameObject[] choice0;
 
-    //DialogueManager dialogueManager;
 
     //UI For shop 
     [Header("Shop UI")]
-    [SerializeField] private GameObject shopUI;
+    [SerializeField] 
+    private GameObject shopUI;
 
-    public DialogueManager dialogueManager;
+   // public DialogueManager dialogueManager;
     [Header("Choice 0")]
     [SerializeField] private GameObject[] choice0;
 
-    public bool isSelected; 
+    public bool isSelected;
 
 
 
     void Start()
     {
-      dialogueManager = GetComponent<DialogueManager>();
+     // dialogueManager = GetComponent<DialogueManager>();
       shopUI.SetActive(false);
-    
     }
 
     void Update()
     {
-       // int choiceIndex = 0;
-       // dialogueManager.MakeChoice(choiceIndex);
-            
-
-       //for (int i = 0; i > choice0.Length i++)
-       // {
-       //     GameObject choice = choice0[i];
-       //     choice
-       // }
- 
-
-
-        //if(Input.GetKeyDown(KeyCode.Z) && choice0[0])
-        //{
-          //  isSelected = true;
-           // Debug.Log("Enter shop");
-           
-            //for(int i = 0; i < choice0.Length; i++)
-            //{
-            //    choice0[i].SetActive(false);
-            //    Debug.Log("Enter shop");
-            //}
-        //}
-
-        //if(choice0[0].CompareTag("True"))
-        //{
-        // if(Input.GetKeyDown(KeyCode.Return))
-        //    {
-        //   dialogueManager.gameObject.SetActive(!dialogueManager.gameObject.activeSelf);
-        //    Debug.Log("I have enter shop");
-        //     }
-        //}
-
-            //if(Input.GetKeyDown(KeyCode.Return))
-           // {
-           // }
-        
-          //  EventSystem.current.SetSelectedGameObject(this.gameObject);
       
     }
-
+  
     public void ChoiceMade(int choiceIndex)
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -88,9 +44,47 @@ public class enterShop : MonoBehaviour
             {
                 Debug.Log("TextHere");
                 shopUI.SetActive(true);
+
             }
+            if (!Input.GetKeyDown(KeyCode.Return))
+            {
             
+                 ExitShop(choiceIndex);
+            }
+
+
         }
     }
+    //work in process
+    public void ExitShop(int shopisClosed)
+    {
+      if(Input.GetKeyDown(KeyCode.Return))
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(shopMenu);
+            Debug.Log("ExitShop");
+            shopUI.SetActive(false);
+        }
+        
+        
+    }
+
+    public void buyItems(Items item)
+    {
+
+        if(playerCoins.CoinCollected - item.price < 0)
+        {
+            return;
+
+        }
+            playerCoins.CoinCollected -= item.price;
+
+
+        //Need to remove the item then give the item to the player 
+
+
+    }
+
+
 
 }

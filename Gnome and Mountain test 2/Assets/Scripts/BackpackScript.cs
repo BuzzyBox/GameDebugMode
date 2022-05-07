@@ -8,6 +8,13 @@ public class BackpackScript : MonoBehaviour
     [SerializeField] Collider2D backpackOBJ;
     [SerializeField] GameObject BackpackGO;
     //[SerializeField] Physics backpack;
+    public List<Items> BackpackItems = new List<Items>();
+
+
+    public void AddItem(Items item)
+    {
+        BackpackItems.Add(item);
+    }
 
 
     void Start()

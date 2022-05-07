@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MerchantPH : MonoBehaviour
-{
-
-    
+{ 
 
 
     [Header("Visual Cue")]

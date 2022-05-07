@@ -8,6 +8,8 @@ public class scriptTest1 : MonoBehaviour
     Rigidbody2D placeHolderRB;
     Collider2D pHCollider;
     Animator pHAnimtor;
+    Items item;
+    enterShop shopping;
    // [SerializeField]
    // GameObject phBackpack;
     [SerializeField]
@@ -21,7 +23,9 @@ public class scriptTest1 : MonoBehaviour
     {
         placeHolderRB = GetComponent<Rigidbody2D>();
         pHCollider = GetComponent<Collider2D>();
-        pHAnimtor = GetComponent<Animator>();
+        pHAnimtor = GetComponent<Animator>(); 
+        shopping = GetComponent<enterShop>();
+        item = GetComponent<Items>();
     }
 
     void Update()
@@ -69,6 +73,8 @@ public class scriptTest1 : MonoBehaviour
                 pHSpeed -= 1000;
                 Debug.Log("Slowing down");
             }
+            
+                
             
 
         }
