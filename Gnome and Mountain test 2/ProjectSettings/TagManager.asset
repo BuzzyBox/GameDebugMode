@@ -13,6 +13,7 @@ TagManager:
   - Cost
   - Name
   - Image
+  - Spikes
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Foreground
   - Player
-  - 
+  - Spikes
   - 
   - 
   - 

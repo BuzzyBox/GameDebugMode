@@ -1,24 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class scriptTest1 : MonoBehaviour
 {
-
+    public static scriptTest1 instance;
     Rigidbody2D placeHolderRB;
     Collider2D pHCollider;
     Animator pHAnimtor;
     Items item;
     enterShop shopping;
-    BuyTest1 upgrades1;
+   [HideInInspector] public float resetSpeed;
+   [HideInInspector] public int life = 2;
+    bool isAlive = true;
     // [SerializeField]
     // GameObject phBackpack;
     float control;
     [SerializeField]
     public float pHSpeed = 8000f;
-    float pHJump = 5;
+    public float pHJump = 5f;
+    [SerializeField]
+    BuyTest1 upgrades1;
+    SpikesAttack spikes;
 
-    [HideInInspector] public int CoinCollected = 0;
+    public int CoinCollected;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
 
     void Start()
@@ -28,20 +40,27 @@ public class scriptTest1 : MonoBehaviour
         pHAnimtor = GetComponent<Animator>();
         shopping = GetComponent<enterShop>();
         item = GetComponent<Items>();
+        upgrades1 = GetComponent<BuyTest1>();
+        spikes = GetComponent<SpikesAttack>();
+        resetSpeed = pHSpeed;
     }
 
     void Update()
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+
+        if(isAlive)
         {
+            if (DialogueManager.GetInstance().dialogueIsPlaying)
+         {
             placeHolderRB.velocity = Vector2.zero;
             return;
+          }
+
+          Movement();
+          Jumping();
+
         }
-
-
-
-        Movement();
-        Jumping();
+       
 
     }
 
@@ -74,15 +93,13 @@ public class scriptTest1 : MonoBehaviour
 
             if (CoinCollected > 0)
             {
+              
                 pHSpeed -= 1000;
                 Debug.Log("Slowing down");
             }
+            
 
-            if(CoinCollected < 0)
-            {
-                pHSpeed = 8000;
-                Debug.Log("Speed up");
-            }
+     
 
             //if(CoinCollected - upgrade1.coins > 0)
             //{
@@ -94,8 +111,35 @@ public class scriptTest1 : MonoBehaviour
 
 
 
+        }  
+
+        if(collision.gameObject.CompareTag("Spikes"))
+        {
+            Debug.Log("is Hurt");
+            life--;
+            
+          //  Destroy(collision.gameObject);
+            if(life < 0)
+            {
+                isAlive = false;
+                gameObject.SetActive(false);
+                
+            }
+            if(isAlive == false)
+            {
+                Scene reloadscene;
+                reloadscene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(reloadscene.name);
+            }
+
+            
+
         }
+        
+        
     }
+
+
 
 
     private void Jumping()
@@ -111,9 +155,29 @@ public class scriptTest1 : MonoBehaviour
                 placeHolderRB.velocity += jumpVelocity;
 
             }
-
+           
         }
     }
+
+    public IEnumerator KnockBack(float knockBackDur, float knockBackPow, Vector3 knockbackDir)
+    {
+        float minustime = -1.3f;
+
+        float timer = 0;
+       
+        while( knockBackDur > timer)
+             {
+            timer += Time.deltaTime;
+            placeHolderRB.AddForce(new Vector3(knockbackDir.x * minustime, knockbackDir.y * knockBackPow, transform.position.z));
+           // Vector2 dir = (obj.transform.position - this.transform.position).normalized;
+            //placeHolderRB.AddForce(-dir * knockBackPow);
+           // placeHolderRB.AddForce(new Vector3(dir.x * -100, dir.y * knockBackPow, transform.position.z));
+             }
+        
+        yield return 0;
+
+    }
+
 
 
     //private void FixedUpdate()
