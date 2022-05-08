@@ -59,6 +59,9 @@ public class scriptTest1 : MonoBehaviour
           Movement();
           Jumping();
 
+         
+
+
         }
        
 
@@ -78,6 +81,10 @@ public class scriptTest1 : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+
+       
+
 
     }
 
@@ -132,11 +139,16 @@ public class scriptTest1 : MonoBehaviour
                 SceneManager.LoadScene(reloadscene.name);
             }
 
-            
 
+            if(collision.gameObject.CompareTag("MovingPlatform"))
+            {
+               pHSpeed = resetSpeed;
+            }
+
+            
         }
-        
-        
+
+      
     }
 
 

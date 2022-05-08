@@ -14,6 +14,7 @@ TagManager:
   - Name
   - Image
   - Spikes
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
