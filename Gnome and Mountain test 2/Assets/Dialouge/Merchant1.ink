@@ -1,26 +1,29 @@
 
 
 .
-Hey!
-Little gnome friend! 
-I see you are going to climb up the mountain
-I would suggest getting an some climbing equipment before attempting
-Bring back a coin, I have the item you just need!
+Hey Buddy!
+Ya, you over there! 
+You're the gnome who's going to climb the mountain aren't ya?
+I highly suggest getting some climbing equipment before attempting that beast!
+Bring back some coins and I'll give you a couple of items that you need!
 
 
-//Need to either make a true statement or a tag to trigger this
-#coin 
 -> haveCoin
 
 ==haveCoin==
 
 Hey have you brought back a coin yet? 
 
-    +[yes]
-    Awesome 
+    +[Yes]
+    Nice!! Go into my shop, only... 
+    if you have the coins!
     ->DONE
-    +[no]
-    come back later than
+    +[No]
+    Come back later than!
     ->DONE
+    +[Shop]
+    Click on the items that you want!
+    ->DONE
+    
 
 ->END

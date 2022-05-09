@@ -1,13 +1,14 @@
 .
-Hi there so the game is finally done!
-I've tried my best to get everthing working...
-...but I know there's still going to be bugs! 
+Hi there! this is the final prototype of the game I was making! 
+I've tried my best to get everything working...
+...but there are still a lot of bugs!
+but I am happy with the final result now though!  
+If there is anything I can do better in the future please let me know! :) 
 ->Choices
 ==Choices==
-would you like to hear how the game is played? :)
-    *[yes] -> Main
-    
-    *[no] 
+Would you like some context on what this game is about?
+    *[Yes] -> Main
+    *[No] 
     See ya!
     ->END
 
@@ -16,14 +17,13 @@ would you like to hear how the game is played? :)
 To play the game you must collect one coin for each item to pass through this level 
 but when you do collect these coins they will slow you down! 
 
-so just try your best to use your platform skills if you can! 
+So just try your best to use your platform skills if you can! 
 
-you can move the arrow keys to move around and space to jump 
+You can move the arrow keys to move around and space to jump 
 
-would you like to hear it again?
+Would you like to hear it again?
     
-    +[yes] ->Main
-    
-    *[no] 
+    +[Yes] ->Main
+    *[No] 
     See ya
     ->END

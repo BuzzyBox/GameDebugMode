@@ -10,7 +10,7 @@ public class enterShop : MonoBehaviour
     public GameObject shopMenu;
     public scriptTest1 playerCoins;
     public BuyTest1 buy;
-
+    public DialogueManager DM;
 
 
     //UI For shop 
@@ -23,7 +23,7 @@ public class enterShop : MonoBehaviour
     [SerializeField] private GameObject[] choice0;
 
     public bool isSelected;
-
+        
 
 
     void Start()
@@ -42,68 +42,88 @@ public class enterShop : MonoBehaviour
     {
         
 
-        if (playerCoins.gameObject.CompareTag("Coin"))
-        {
-
-            if(Input.GetKeyDown(KeyCode.Return))
-            {
-                if(choice0[3].gameObject.CompareTag("Shop"))
-                {
-                    Debug.Log("Shop here");
-                    shopUI.SetActive(true);
-                    buy.gameObject.SetActive(true);
-                }
-            }
-
-
-        }
-        else
-        {
-            buy.gameObject.SetActive(false);
-            shopUI.SetActive(false);
-        }
-
-
-    }
-
-    public void ChoiceMade(int choiceIndex)
-    {
-       
-
-        //if (Input.GetKeyDown(KeyCode.Return))
+        //if (playerCoins.gameObject.CompareTag("Coin"))
         //{
-        //    if(choice0[0].gameObject.CompareTag("True"))
+
+        //    if(Input.GetKeyDown(KeyCode.Return))
         //    {
-        //        Debug.Log("TextHere");
-        //        shopUI.SetActive(true);
-        //        buy.gameObject.SetActive(true);
-
-
-
-        //    }
-        //    if (!Input.GetKeyDown(KeyCode.Return))
-        //    {
-            
-        //         ExitShop(choiceIndex);
+        //        if(choice0[3].gameObject.CompareTag("Shop"))
+        //        {
+        //            Debug.Log("Shop here");
+        //            shopUI.SetActive(true);
+        //            buy.gameObject.SetActive(true);
+        //        }
         //    }
 
 
         //}
+        //else
+        //{
+        //    buy.gameObject.SetActive(false);
+        //    shopUI.SetActive(false);
+       // }
+
+
+    }
+
+
+
+    public void ChoiceMade(int choiceIndex)
+    {
+        
+ 
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+
+
+            for (choiceIndex = 0; choiceIndex < choice0.Length; choiceIndex++)
+            {
+                
+                if (choice0[choiceIndex].gameObject.CompareTag("True"))
+                {
+                    
+                
+                        Debug.Log("EnterShop");
+                        shopUI.SetActive(true);
+                        buy.gameObject.SetActive(true);
+
+                }
+            }
+
+
+            //if (choice0[2].gameObject.CompareTag("Shop"))
+            //{
+            //    Debug.Log("TextHere");
+            //    shopUI.SetActive(true);
+            //    buy.gameObject.SetActive(true);
+
+
+
+            //}
+            if (!Input.GetKeyDown(KeyCode.Return))
+            {
+
+                ExitShop(choiceIndex);
+            }
+
+
+        }
     }
     //work in process
-    //public void ExitShop(int shopisClosed)
-    //{
-    //  if(Input.GetKeyDown(KeyCode.Return))
-    //    {
-    //        EventSystem.current.SetSelectedGameObject(null);
-    //        EventSystem.current.SetSelectedGameObject(shopMenu);
-    //        buy.gameObject.SetActive(false);
-    //        Debug.Log("ExitShop");
-    //        shopUI.SetActive(false);
-    //    }
-        
-        
-    //}
+    public void ExitShop(int shopisClosed)
+    {
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(shopMenu);
+            buy.gameObject.SetActive(false);
+            Debug.Log("ExitShop");
+            shopUI.SetActive(false);
+        //}
+
+
+    }
 
     public void buyItems(Items item)
     {
